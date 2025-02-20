@@ -1,5 +1,8 @@
 
 import Map from './map.js';
+import Sidebar from './sidebar.js';
+
+const points = [];
 
 window.map = new Map('mapCanvas', {
     background: {
@@ -18,5 +21,11 @@ window.map = new Map('mapCanvas', {
         min: 0.5,
         max: 10,
     },
-    points: [],
+    points,
 });
+
+const sidebar = new Sidebar('sidebar');
+
+sidebar.setOnPointsChanged(points => map.setPoints(points));
+sidebar.setPoints(points);
+

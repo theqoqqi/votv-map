@@ -10,8 +10,34 @@
     <div class='map-container'>
         <canvas id='mapCanvas'></canvas>
     </div>
-    <div class='sidebar'>
-
+    <div id='sidebar' class='sidebar'>
+        <h2>Point list</h2>
+        <form id='add-point-form'>
+            <div>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input type='text' id='label-input' placeholder='Label' required autocomplete='off' />
+            </div>
+            <div>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input type='number' id='x-input' placeholder='X' step='any' required />
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input type='number' id='y-input' placeholder='Y' step='any' required />
+                <button type='submit'>Add</button>
+            </div>
+        </form>
+        <ul id='point-list'></ul>
+        <template id='point-item-template'>
+            <li class='point'>
+                <div class='point-info'>
+                    <span class='point-label'></span>
+                    <span class='point-position'></span>
+                </div>
+                <div class='point-controls'>
+                    <button class='edit-button'>Edit</button>
+                    <button class='delete-button'>Remove</button>
+                </div>
+            </li>
+        </template>
     </div>
 </div>
 <script type='module' src='js/index.js'></script>
