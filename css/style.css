@@ -10,7 +10,33 @@ body {
     overflow: hidden;
 }
 
+.page {
+    display: flex;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1;
+}
+
 canvas {
-    border: 1px solid #333;
+    position: absolute;
+
     background: #000;
+}
+
+.sidebar {
+    width: 400px;
+
+    flex: 0 0 400px;
+
+    border-left: 2px solid #888;
 }

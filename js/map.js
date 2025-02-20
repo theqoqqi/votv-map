@@ -89,7 +89,9 @@ export default class Map {
     }
 
     resizeCanvas() {
-        const size = Math.max(window.innerWidth, window.innerHeight);
+        const parent = this.canvas.parentElement;
+        const size = Math.max(parent.clientWidth, parent.clientHeight);
+
         this.canvas.width = size;
         this.canvas.height = size;
         this.draw();
