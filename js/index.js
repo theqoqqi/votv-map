@@ -1,8 +1,10 @@
 
 import Map from './map.js';
 import Sidebar from './sidebar.js';
+import Storage from './storage.js';
 
-const points = [];
+const storage = new Storage('points');
+const points = storage.loadPoints();
 
 window.map = new Map('mapCanvas', {
     background: {
@@ -26,6 +28,9 @@ window.map = new Map('mapCanvas', {
 
 const sidebar = new Sidebar('sidebar');
 
-sidebar.setOnPointsChanged(points => map.setPoints(points));
-sidebar.setPoints(points);
+sidebar.setOnPointsChanged(points => {
+    map.setPoints(points);
+    storage.savePoints(points);
+});
 
+sidebar.setPoints(points);
