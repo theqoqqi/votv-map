@@ -170,4 +170,65 @@ canvas {
             }
         }
     }
+
+    .json-import-container {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 20px;
+        padding: 5px 10px;
+
+        background: #f8f9fa;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
+        height: 25px;
+        flex: 0 0 25px;
+
+        &:hover, &:active {
+            height: 180px;
+            flex: 0 0 180px;
+        }
+
+        h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: none;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+            background: #fff;
+        }
+
+        button {
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out;
+            margin-top: 10px;
+
+            &:hover {
+                background: #0056b3;
+            }
+
+            &:active {
+                background: #003f7f;
+            }
+        }
+    }
 }

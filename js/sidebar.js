@@ -13,11 +13,23 @@ export default class Sidebar {
         this.$yInput = this.container.querySelector('#y-input');
         this.$list = this.container.querySelector('#point-list');
 
+        this.$importTextarea = this.container.querySelector('#json-import');
+        this.$importButton = this.container.querySelector('#import-button');
+
+        this.createImportPlaceholder();
         this.initEvents();
+    }
+
+    createImportPlaceholder() {
+        this.$importTextarea.setAttribute('placeholder', JSON.stringify([
+            { 'label': 'Point 1', 'position': [-11.17, 0.32] },
+            { 'label': 'Point 2', 'position': [22.33, -44.1] },
+        ], null, 4));
     }
 
     initEvents() {
         this.$form.addEventListener('submit', (e) => this.handleSubmit(e));
+        this.$importButton.addEventListener('click', () => this.importPoints());
     }
 
     handleSubmit(e) {
@@ -41,6 +53,32 @@ export default class Sidebar {
             this.updateList();
             this.notifyPointsChanged();
             this.$form.reset();
+        }
+    }
+
+    importPoints() {
+        const jsonText = this.$importTextarea.value.trim();
+
+        if (!jsonText) {
+            return;
+        }
+
+        try {
+            let importedPoints = [];
+
+            eval(`importedPoints = ${jsonText}`);
+
+            if (!Array.isArray(importedPoints)) {
+                alert('Imported data must be an array.');
+                return;
+            }
+
+            this.setPoints([
+                ...this.getPoints(),
+                ...importedPoints,
+            ]);
+        } catch (error) {
+            alert('Failed to import points: ' + error.message);
         }
     }
 
